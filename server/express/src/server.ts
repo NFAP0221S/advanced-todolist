@@ -5,13 +5,12 @@ import express, { type Express } from "express";
 import helmet from "helmet";
 
 import { openAPIRouter } from "@/api-docs/openAPIRouter";
-// import { healthCheckRouter } from "@/api/healthCheck/healthCheckRouter";
-// import { userRouter } from "@/api/user/userRouter";
+import { todoRouter, userRouter, authRouter } from "@/api/index";
 import errorHandler from "@/common/middlewares/errorHandler";
 import rateLimiter from "@/common/middlewares/rateLimiter";
 import requestLogger from "@/common/middlewares/requestLogger";
-import { env } from "@/common/utils/envConfig";
-import logger from "@/common/utils/logger"; // Winston 로거 임포트
+import { env } from "@/config/envConfig";
+import logger from "@/common/utils/logger";
 
 const app: Express = express();
 
@@ -29,8 +28,9 @@ app.use(rateLimiter);
 app.use(requestLogger);
 
 // Routes
-// app.use("/health-check", healthCheckRouter);
-// app.use("/users", userRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
+app.use("/api/todo", todoRouter);
 
 // Swagger UI
 app.use(openAPIRouter);
