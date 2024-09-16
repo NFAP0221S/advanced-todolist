@@ -4,7 +4,7 @@ import cors from "cors";
 import express, { type Express } from "express";
 import helmet from "helmet";
 
-import { openAPIRouter } from "@/api-docs/openAPIRouter";
+// import { openAPIRouter } from "@/api-docs/openAPIRouter";
 import { todoRouter, userRouter, authRouter } from "@/api/index";
 import errorHandler from "@/common/middlewares/errorHandler";
 import rateLimiter from "@/common/middlewares/rateLimiter";
@@ -16,6 +16,10 @@ const app: Express = express();
 
 // Set the application to trust the reverse proxy
 app.set("trust proxy", true);
+
+app.get('/', (req, res) => {
+    res.send('hello express');
+});
 
 // Middlewares
 app.use(express.json());
@@ -33,7 +37,7 @@ app.use("/api/user", userRouter);
 app.use("/api/todo", todoRouter);
 
 // Swagger UI
-app.use(openAPIRouter);
+// app.use(openAPIRouter);
 
 // Error handlers
 app.use(errorHandler());

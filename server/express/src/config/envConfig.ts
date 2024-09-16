@@ -18,4 +18,8 @@ export const env = cleanEnv(process.env, {
   DB_PORT: port({ devDefault: 3306 }),
 
   JWT_SECRET: str({ devDefault: "" }),
+
+  // Rate Limiter Configurations
+  COMMON_RATE_LIMIT_MAX_REQUESTS: num({ devDefault: 100 }), // Max number of requests per window
+  COMMON_RATE_LIMIT_WINDOW_MS: num({ devDefault: 15 * 60 * 1000 }), // Window duration in milliseconds
 });

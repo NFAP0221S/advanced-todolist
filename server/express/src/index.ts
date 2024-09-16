@@ -1,3 +1,4 @@
+import 'module-alias/register';
 import { env } from "@/config/envConfig";
 import { app, logger } from "@/server";
 
