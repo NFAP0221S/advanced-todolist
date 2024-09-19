@@ -145,3 +145,4 @@ lib/
 # 예:
 # /public/uploads/
 # /secrets/
+.aider*
