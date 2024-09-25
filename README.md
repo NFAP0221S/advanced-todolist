@@ -1,4 +1,6 @@
-다양한 스택 실험실 .with todo-list
+실험실
 
-#express_spa
-- express 실행: npx tsc -> node dist/index.js
+- 모노레포
+- mfa (webpack)
+- 각종 spa
+- express / prisma / mysql
